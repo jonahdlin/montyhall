@@ -1,2 +1,0 @@
-# montyhall
-First project
