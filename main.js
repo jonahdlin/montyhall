@@ -1,3 +1,5 @@
+document.write("You still there?")
+
 var explain? = prompt("Do you want a brief explanation of the problem?")
 
 if (explain? === "yes" || explain? === "Yes" || explain? === "yeah" || explain? === "Yeah" || explain? === "sure" || explain? === "Sure") {
