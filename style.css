@@ -1,0 +1,62 @@
+.doorButton {
+	padding: 3em 5em;
+	background: #303030;
+	color: #FFFFFF;
+	opacity: 0.8;
+	border: solid 1px #303030;
+	-webkit-transition-duration: 0.1s;
+    -moz-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+}
+
+.doorButton:hover {
+	opacity: 0.95;
+}
+
+.doorButton:active {
+    -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.6);
+    background: #303030;
+    border: solid 1px #030303;
+}
+
+#doorButtonContainer {
+	width: 100%;
+	text-align: center;
+}
+
+.yesnoButton {
+	padding: 1.5em 3em;
+	color: #FFFFFF;
+	opacity: 0.8;
+	-webkit-transition-duration: 0.1s;
+    -moz-transition-duration: 0.1s;
+    transition-duration: 0.1s;
+}
+
+#yes {
+	background: #39B84A;
+	border: solid 1px #303030;
+}
+
+#no {
+	background: #E00000;
+	border: solid 1px #303030;
+}
+.yesnoButton:hover {
+	opacity: 0.95;
+}
+
+.yesnoButton:active {
+    -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.6);
+    background: #303030;
+    border: solid 1px #030303;
+}
+
+#yesnoButtonContainer {
+	width: 100%;
+	text-align: center;
+}
