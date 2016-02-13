@@ -1,23 +1,109 @@
 <html>
-	<title>Monty Hall Demo</title>
+	<title>Monty Hall</title>
 <head>
 	<link href="style.css" rel="stylesheet" type="text/css" />
-	<h1 font-family: Verdana; align="center">A demonstration of the famous <a href="https://en.wikipedia.org/wiki/Monty_Hall_problem">Monty Hall</a> problem</h1>
-	<h3 font-family: Verdana; align="center">Also my first JavaScript program.</h3>
 </head>
 <body>
 	<script src="main.js" type="text/javascript"></script>
-	<hr>
-	<div id="doorButtonContainer">
-		<input class="doorButton" id="input1" onclick="firstStep(1)" type="button" value="Door 1" />
-		<input class="doorButton" id="input2" onclick="firstStep(2)" type="button" value="Door 2" />
-		<input class="doorButton" id="input3" onclick="firstStep(3)" type="button" value="Door 3" />
+	<div id="mainContainer">
+
+	<div id="headerContainer">
+		<p>
+			<span id="headerText">The Monty Hall Problem</span>
+		</p>
+	</div>
+	<div id="information">
+		<div id="infoText">
+			<p>Welcome to my demonstration of the famous Monty Hall probability problem. To get started, just click one of the door buttons on the right.
+			<br>
+			<br>
+			For a quick summary of the Monty Hall problem, click <a href="#explanation">here</a>.
+			<br>
+			<br>
+			And while you're around, check out my <a href="http://www.jonahdlin.com" target="_blank">personal website</a>.
+			<br>
+			<br>
+			Thanks for stopping by and enjoy the demo!
+			<br>
+			<br>
+			<span id="signOff">- Jonah Dlin, creator</span></p>
+		</div>
+	</div>
+	<div id="interactionContainer">
+		<div id="console">
+		<div id="interaction">
+			<div id="doorButtonContainer">
+				<input class="doorButton" id="input1" onclick="firstStep(1)" type="button" value="Door 1" />
+				<input class="doorButton" id="input2" onclick="firstStep(2)" type="button" value="Door 2" />
+				<input class="doorButton" id="input3" onclick="firstStep(3)" type="button" value="Door 3" />
+			</div>
+
+			<div id="outputContainer">
+				<p id="output"></p>
+			</div>
+
+			<div id="yesnoButtonContainer"></div>
+		</div>
+		</div>
+	</div>
+	<div id="stats">
+		<table id="statsTable">
+			<tr>
+				<td id="statsCorner"></td>
+				<td class="statsHeader">Wins</td>
+				<td class="statsHeader">Losses</td>
+				<td class="statsHeader">Ratio (L:W)</td>
+			</tr>
+			<tr>
+				<td class="statsSider">When changed</td>
+				<td class="statsData" id="winsWhenChanged">0</td>
+				<td class="statsData" id="lossesWhenChanged">0</td>
+				<td class="statsData" id="ratioWhenChanged">-</td>
+			</tr>
+			<tr>
+				<td class="statsSider">When stayed</td>
+				<td class="statsData" id="winsWhenStayed">0</td>
+				<td class="statsData" id="lossesWhenStayed">0</td>
+				<td class="statsData" id="ratioWhenStayed">-</td>
+			</tr>
+			<tr>
+				<td class="statsSider">Total</td>
+				<td class="statsData" id="winsTotal">0</td>
+				<td class="statsData" id="lossesTotal">0</td>
+				<td class="statsData" id="ratioTotal">-</td>
+			</tr>
+		</table>
+	</div>
+	</div>
+	<div id="explanation">
+		<h2 id="explainHeader">Quick Summary<br></h2>
+		<p id="explainText">The Monty Hall problem is a probability puzzle named after the original host of "Let's Make a Deal", Monty Hall.
+		<br>
+		<br>
+		It presents a game-show-like  scenario where the "contestant" is presented with three closed doors. Behind two of the doors is a goat, and behind the other door there is a car. Obviously, the contestant wants the car. The contestant picks one door, but does not open it.
+		<br>
+		<br>
+		There are then two doors remaining, at least one of which must contain a goat. The host opens an unpicked door that contains a goat and asks the contestant if they would like to change their door to the last remaining door.
+		<br>
+		<br>
+		Here is where the "probability" part of the puzzle comes in. If the contestant chooses to change their door at this point, they have a 2 in 3 chance of getting the car, but if they do not change their door, they have only a 1 in 3 chance.
+		<br>
+		<br>
+		This can seem counterintuitive at first, because it seems as though since only two doors remain, one which definitely contains a goat and one which definitely contains a car, there should be a 50-50 chance that your door contains the car.
+		<br>
+		<br>
+		This web application was made to let you see for certain that the odds are in fact 2 in 3 if you change your door.
+		<br>
+		<br>
+		Go ahead and pick one of the doors above, and after playing through 50 times or so (alternating whether or not you change your door occasionally) you should see in the stats table above that the ratio of losses to wins when you choose to change your door is about 0.33 (i.e. you lose one third of the time), and that the ratio of losses to wins when you choose to keep your door is about 0.66 (i.e. you lose two thirds of the time).
+		<br>
+		<br>
+		Enjoy! And if you would like a great explanation on how this works, check out the Numberphile video explaining the problem by clicking <a href="https://youtu.be/4Lb-6rxZxx0" target="_blank">this</a>.</p>
 	</div>
 	<hr>
-	
-	<div id="outputContainer"><p id="output"></p></div>
-
-	<div id="yesnoButtonContainer">	</div>
-
 </body>
+<footer>
+	<p id="footerLeft">Written by: Jonah Dlin</p>
+	<p id="footerRight">February 13th, 2016</p>
+</footer>
 </html>

@@ -1,5 +1,76 @@
+/*------------------------------------
+Doc-wide
+------------------------------------*/
+html {
+	background-image: url("style_resources/fabric.png");
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+	color: black;
+}
+
+a:hover {
+	color: #696969;
+}
+
+/*------------------------------------
+Main container 
+------------------------------------*/
+#mainContainer {
+	width: 100%;
+	height: 100%;
+}
+
+/*------------------------------------
+Header 
+------------------------------------*/
+
+#headerContainer {
+	width: 100%;
+	height: 10%;
+	display: flex;
+	justify-content: center;
+}
+
+#headerText {
+	align-self: center;
+	font-size: 5vmin;
+	font-weight: 100;
+}
+
+/*------------------------------------
+Info box 
+------------------------------------*/
+
+#information {
+	width: 35%;
+	height: 40%;
+	float: left;
+}
+
+#infoText {
+	padding: 1em;
+	font-size: 2vmin;
+}
+
+#signOff {
+	font-size: 1.65vmin;
+}
+
+/*------------------------------------
+Door button 
+------------------------------------*/
+
 .doorButton {
-	padding: 3em 5em;
+	padding: 3em 4em;
 	background: #303030;
 	color: #FFFFFF;
 	opacity: 0.8;
@@ -7,6 +78,7 @@
 	-webkit-transition-duration: 0.1s;
     -moz-transition-duration: 0.1s;
     transition-duration: 0.1s;
+	font-family: "Courier New", Courier, monospace;
 }
 
 .doorButton:hover {
@@ -22,9 +94,41 @@
 }
 
 #doorButtonContainer {
+	padding-top: 2em;
 	width: 100%;
 	text-align: center;
 }
+
+/*------------------------------------
+Interaction window 
+------------------------------------*/
+
+#interactionContainer {
+	display: flex;
+	justify-content: center;
+	width: 65%;
+	height: 90%;
+	float: right;
+}
+
+#console {
+	align-self: center;
+	height: 90%;
+	width: 90%;
+	color: white;
+	font-family: "Courier New", Courier, monospace;
+	background-color: black;
+	border: 20px solid #969696;
+	border-radius: 3em;
+}
+
+#outputContainer{
+	padding: 2em;
+}
+
+/*------------------------------------
+Yes and no button 
+------------------------------------*/
 
 .yesnoButton {
 	padding: 1.5em 3em;
@@ -33,6 +137,7 @@
 	-webkit-transition-duration: 0.1s;
     -moz-transition-duration: 0.1s;
     transition-duration: 0.1s;
+    font-family: "Courier New", Courier, monospace;
 }
 
 #yes {
@@ -44,6 +149,7 @@
 	background: #E00000;
 	border: solid 1px #303030;
 }
+
 .yesnoButton:hover {
 	opacity: 0.95;
 }
@@ -59,4 +165,89 @@
 #yesnoButtonContainer {
 	width: 100%;
 	text-align: center;
+}
+
+/*------------------------------------
+Stats 
+------------------------------------*/
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+#stats {
+	width: 35%;
+	height: 35%;
+	float: left;
+	display: flex;
+	justify-content: center;
+}
+
+#statsTable {
+	align-self: center;
+	margin: 0 auto;
+	height: 25%;
+	background-color: white;
+	font-size: 1em;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.statsData {
+	text-align: center;
+	padding: 0.5em;
+}
+
+.statsHeader {
+	text-align: center;
+	border-bottom: 1px solid black;
+	padding: 0.5em;
+}
+
+.statsSider {
+	text-align: left;
+	border-right: 1px solid black;
+	padding: 0.5em;
+}
+
+#statsCorner {
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+}
+
+/*------------------------------------
+Explanation box 
+------------------------------------*/
+
+#explanation {
+	width: 100%;
+	float: left;
+}
+
+#explainHeader {
+	padding-left: 0.5em;
+	font-size: 2em;
+	font-weight: 100;
+}
+
+#explainText {
+	padding: 1em;
+}
+
+/*------------------------------------
+Footer
+------------------------------------*/
+
+#footerLeft {
+	padding-left: 6em;
+	padding-right: 2em;
+	float: left;
+	font-size: 0.8em;
+}
+
+#footerRight {
+	padding-right: 6em;
+	padding-left: 2em;
+	float: right;
+	font-size: 0.8em;
 }

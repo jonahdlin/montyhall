@@ -1,6 +1,64 @@
-var possibleDoors = [1, 2, 3];
-var goodDoor = Math.floor(3 * Math.random()) + 1;
-possibleDoors.splice(goodDoor - 1, 1);
+// Declaration of win/loss/ratio indices
+var winsWhenChanged = 0;
+var lossesWhenChanged = 0;
+var ratioWhenChanged = 0;
+
+var winsWhenStayed = 0;
+var lossesWhenStayed = 0;
+var ratioWhenStayed = 0;
+
+var winsTotal = 0;
+var lossesTotal = 0;
+var ratioTotal = 0;
+
+function statUpdate(prize,changed) {
+	// Figure out what happened and update the info
+	if (prize && changed) {
+		winsWhenChanged++;
+		winsTotal++;
+		document.getElementById("winsWhenChanged").innerHTML = winsWhenChanged;
+	} else if (prize && ! changed) {
+		winsWhenStayed++;
+		winsTotal++;
+		document.getElementById("winsWhenStayed").innerHTML = winsWhenStayed;
+	} else if (! prize && changed) {
+		lossesWhenChanged++;
+		lossesTotal++;
+		document.getElementById("lossesWhenChanged").innerHTML = lossesWhenChanged;
+	} else {
+		lossesWhenStayed++;
+		lossesTotal++;
+		document.getElementById("lossesWhenStayed").innerHTML = lossesWhenStayed;
+	}
+
+	// Update the total wins and losses
+	document.getElementById("winsTotal").innerHTML = winsTotal;
+	document.getElementById("lossesTotal").innerHTML = lossesTotal;
+
+	// Update total ratio if possible
+	if (winsTotal) {
+		ratioTotal = (lossesTotal / winsTotal).toFixed(4);
+		document.getElementById("ratioTotal").innerHTML = ratioTotal;
+	} else {
+		document.getElementById("ratioTotal").innerHTML = "-";
+	}
+
+	// Update changed ratio if possible
+	if (winsWhenChanged) {
+		ratioWhenChanged = (lossesWhenChanged / winsWhenChanged).toFixed(4);
+		document.getElementById("ratioWhenChanged").innerHTML = ratioWhenChanged;
+	} else {
+		document.getElementById("ratioWhenChanged").innerHTML = "-";
+	}
+
+	// Update stayed ratio if possible
+	if (winsWhenStayed) {
+		ratioWhenStayed = (lossesWhenStayed / winsWhenStayed).toFixed(4);
+		document.getElementById("ratioWhenStayed").innerHTML = ratioWhenStayed;
+	} else {
+		document.getElementById("ratioWhenStayed").innerHTML = "-";
+	}
+}
 
 function shuffle(array) {
 	var m = array.length, t, i;
@@ -30,10 +88,42 @@ function output(text) {
 	}
 }
 
+function replayQuery() {
+	// Put in some buttons to ask if they want to go again
+	var buttonContainer = document.getElementById("yesnoButtonContainer");
+	buttonContainer.innerHTML = '<hr> <input class="yesnoButton" id="yes" onclick="reinitialize(true)" type="button" value="Yes" /> <input class="yesnoButton" id="no" onclick="reinitialize(false)" type="button" value="No" /> <hr>';
+}
+
+function reinitialize(replay) {
+	// Get rid of any text I've already outputted
+	var buttonContainer = document.getElementById("outputContainer");
+	buttonContainer.innerHTML = '';
+
+	// Get rid of the yes/no buttons
+	var buttonContainer = document.getElementById("yesnoButtonContainer");
+	buttonContainer.innerHTML = '';
+
+	// Respond to their button press
+	if (replay) {
+		output("Cool! Click a door button to go again.<br><br>");
+	} else {
+		output("<br><br>Alright, then. Thanks for playing! IF you change your mind, just click a door button to go again.");
+	}
+
+	// Re-enable door buttons
+	var buttonContainer = document.getElementById("doorButtonContainer");
+	buttonContainer.innerHTML = '<input class="doorButton" id="input1" onclick="firstStep(1)" type="button" value="Door 1" /> <input class="doorButton" id="input2" onclick="firstStep(2)" type="button" value="Door 2" /> <input class="doorButton" id="input3" onclick="firstStep(3)" type="button" value="Door 3" />';
+}
+
 function firstStep(doorNum) {
 	// Disable the door buttons so we don't get extra function calls
 	var buttonContainer = document.getElementById("doorButtonContainer");
 	buttonContainer.innerHTML = '<input class="doorButton" id="input1" type="button" value="Door 1" /> <input class="doorButton" id="input2" type="button" value="Door 2" /> <input class="doorButton" id="input3" type="button" value="Door 3" />';
+
+	// Get some doors going
+	possibleDoors = [1, 2, 3];
+	goodDoor = Math.floor(3 * Math.random()) + 1;
+	possibleDoors.splice(goodDoor - 1, 1);
 
 	// Check what door got picked and figure out what the other doors are
 	if (doorNum === goodDoor) {
@@ -68,15 +158,23 @@ function secondStep(selection) {
 	// Decide if they won and tell them
 	if (selection) {
 		if (alternate === goodDoor) {
-			output("<br>Your final choice is door " + alternate + " and this door contains the car!!!");
+			output("<br>Your final choice is door " + alternate + " and this door contains the car!!!<br><br>Would you like to play again?");
+			statUpdate(1,1);
+			replayQuery();
 		} else {
-			output("<br>Your final choice is door " + alternate + " and this door contains a goat. Sorry.");
+			output("<br>Your final choice is door " + alternate + " and this door contains a goat. Sorry.<br><br>Would you like to play again?");
+			statUpdate(0,1);
+			replayQuery();
 		}
 	} else {
 		if (userDoor === goodDoor) {
-			output("<br>Your final choice is door " + userDoor + " and this door contains the car!!!");
+			output("<br>Your final choice is door " + userDoor + " and this door contains the car!!!<br><br>Would you like to play again?");
+			statUpdate(1,0);
+			replayQuery();
 		} else {
-			output("<br>Your final choice is door " + userDoor + " and this door contains a goat. Sorry.");
+			output("<br>Your final choice is door " + userDoor + " and this door contains a goat. Sorry.<br><br>Would you like to play again?");
+			statUpdate(0,0);
+			replayQuery();
 		}
 	}
 }
