@@ -37,24 +37,24 @@ function statUpdate(prize,changed) {
 
 	// Update total ratio if possible
 	if (winsTotal) {
-		ratioTotal = (lossesTotal / (winsTotal + lossesTotal)).toFixed(2);
-		document.getElementById("ratioTotal").innerHTML = toString(ratioTotal * 100).concat("%");
+		ratioTotal = ((lossesTotal / (winsTotal + lossesTotal)) * 100).toFixed(2);
+		document.getElementById("ratioTotal").innerHTML = ratioTotal.toString().concat("%");
 	} else {
 		document.getElementById("ratioTotal").innerHTML = "-";
 	}
 
 	// Update changed ratio if possible
 	if (winsWhenChanged) {
-		ratioWhenChanged = (lossesWhenChanged / (winsWhenChanged + lossesWhenChanged)).toFixed(2);
-		document.getElementById("ratioWhenChanged").innerHTML = toString(ratioWhenChanged * 100).concat("%");
+		ratioWhenChanged = ((lossesWhenChanged / (winsWhenChanged + lossesWhenChanged)) * 100).toFixed(2);
+		document.getElementById("ratioWhenChanged").innerHTML = ratioWhenChanged.toString().concat("%");
 	} else {
 		document.getElementById("ratioWhenChanged").innerHTML = "-";
 	}
 
 	// Update stayed ratio if possible
 	if (winsWhenStayed) {
-		ratioWhenStayed = (lossesWhenStayed / (winsWhenStayed + lossesWhenStayed)).toFixed(2);
-		document.getElementById("ratioWhenStayed").innerHTML = toString(ratioWhenStayed * 100).concat("%");
+		ratioWhenStayed = ((lossesWhenStayed / (winsWhenStayed + lossesWhenStayed)) * 100).toFixed(2);
+		document.getElementById("ratioWhenStayed").innerHTML = ratioWhenStayed.toString().concat("%");
 	} else {
 		document.getElementById("ratioWhenStayed").innerHTML = "-";
 	}
