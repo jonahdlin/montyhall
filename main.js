@@ -37,24 +37,24 @@ function statUpdate(prize,changed) {
 
 	// Update total ratio if possible
 	if (winsTotal) {
-		ratioTotal = (lossesTotal / winsTotal).toFixed(4);
-		document.getElementById("ratioTotal").innerHTML = ratioTotal;
+		ratioTotal = (lossesTotal / (winsTotal + lossesTotal)).toFixed(2);
+		document.getElementById("ratioTotal").innerHTML = toString(ratioTotal * 100).concat("%");
 	} else {
 		document.getElementById("ratioTotal").innerHTML = "-";
 	}
 
 	// Update changed ratio if possible
 	if (winsWhenChanged) {
-		ratioWhenChanged = (lossesWhenChanged / winsWhenChanged).toFixed(4);
-		document.getElementById("ratioWhenChanged").innerHTML = ratioWhenChanged;
+		ratioWhenChanged = (lossesWhenChanged / (winsWhenChanged + lossesWhenChanged)).toFixed(2);
+		document.getElementById("ratioWhenChanged").innerHTML = toString(ratioWhenChanged * 100).concat("%");
 	} else {
 		document.getElementById("ratioWhenChanged").innerHTML = "-";
 	}
 
 	// Update stayed ratio if possible
 	if (winsWhenStayed) {
-		ratioWhenStayed = (lossesWhenStayed / winsWhenStayed).toFixed(4);
-		document.getElementById("ratioWhenStayed").innerHTML = ratioWhenStayed;
+		ratioWhenStayed = (lossesWhenStayed / (winsWhenStayed + lossesWhenStayed)).toFixed(2);
+		document.getElementById("ratioWhenStayed").innerHTML = toString(ratioWhenStayed * 100).concat("%");
 	} else {
 		document.getElementById("ratioWhenStayed").innerHTML = "-";
 	}
